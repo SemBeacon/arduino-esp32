@@ -1,0 +1,1 @@
+This directory contains the code used for the evaluations of SemBeacon.

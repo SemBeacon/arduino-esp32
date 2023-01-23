@@ -1,0 +1,26 @@
+Default: 5.22V 0.11A
+
+4x SemBeacons:
+5min: 
+10min: 
+15min: 
+
+4x iBeacons (without scan response):
+5min: 
+10min: 
+15min: 
+
+4x iBeacons (with scan response):
+5min: 
+10min: 
+15min: 
+
+4x SemBeacon (BLE 4.2):
+5min: 
+10min: 
+15min: 
+
+4x SemBeacon (BLE 5.0):
+5min: 
+10min: 
+15min: 
