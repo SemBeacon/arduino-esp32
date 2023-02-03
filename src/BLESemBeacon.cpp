@@ -16,6 +16,9 @@ static const char *sembeacon_uri_prefix_subs[] = {
 	"urn:",
 	"tag:",
 	"http://purl.org/",
+	"https://purl.org/",
+	"http://w3id.org/",
+	"https://w3id.org/"
 	NULL};
 
 static const char *sembeacon_uri_suffix_subs[] = {
