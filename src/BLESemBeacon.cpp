@@ -18,7 +18,7 @@ static const char *sembeacon_uri_prefix_subs[] = {
 	"http://purl.org/",
 	"https://purl.org/",
 	"http://w3id.org/",
-	"https://w3id.org/"
+	"https://w3id.org/",
 	NULL};
 
 static const char *sembeacon_uri_suffix_subs[] = {
@@ -175,7 +175,7 @@ std::string BLESemBeacon::getManufacturerData()
 	m_adv_data.signalPower = this->signalPower;
 	m_adv_data.flags = this->flags;
 	memset(m_adv_data.namespaceId, 0, sizeof(m_adv_data.namespaceId));
-	memcpy(m_adv_data.namespaceId, this->namespaceId.to128().getNative()->uuid.uuid128, 16);
+	memcpy(m_adv_data.namespaceId, BLEUUID(this->namespaceId.getNative()->uuid.uuid128, 16, true).getNative()->uuid.uuid128, 16);
 	return std::string((char *)&m_adv_data, sizeof(m_adv_data));
 }
 
@@ -206,7 +206,7 @@ std::string BLESemBeacon::getExtendedAdvertisementData()
 	m_ext_adv_data.version = this->version;
 
 	memset(m_ext_adv_data.namespaceId, 0, sizeof(m_ext_adv_data.namespaceId));
-	memcpy(m_ext_adv_data.namespaceId, this->namespaceId.to128().getNative()->uuid.uuid128, 16);
+	memcpy(m_ext_adv_data.namespaceId, BLEUUID(this->namespaceId.getNative()->uuid.uuid128, 16, true).getNative()->uuid.uuid128, 16);
 
 	std::string uriData = encodeURI(this->uri, true);
 	memset(m_ext_adv_data.uri, 0, sizeof(m_ext_adv_data.uri));
