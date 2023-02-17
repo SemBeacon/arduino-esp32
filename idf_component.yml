@@ -1,0 +1,14 @@
+description: "This library provides an implementation SemBeacon BLE beacon specification for the ESP32 using the Arduino platform. "
+url: "https://github.com/SemBeacon/arduino-esp32"
+targets:
+  - esp32
+  - esp32s2
+  - esp32s3
+tags:
+  - arduino
+files:
+  include:
+    - "src/**/*"
+    - "CMakeLists.txt"
+  exclude:
+    - "**/*"
