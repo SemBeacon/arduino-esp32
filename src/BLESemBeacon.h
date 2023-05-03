@@ -25,6 +25,10 @@ typedef struct {
 #define SEMBEACON_FLAG_PRIVATE			(0x01 << 1)
 #define SEMBEACON_FLAG_MOVING 			(0x01 << 2)
 #define SEMBEACON_FLAG_HAS_SYSTEM		(0x01 << 3)
+#define SEMBEACON_FLAG_HAS_TELEMETRY	(0x01 << 4)
+#define SEMBEACON_FLAG_RESERVED_1		(0x01 << 5)
+#define SEMBEACON_FLAG_RESERVED_2		(0x01 << 6)
+#define SEMBEACON_FLAG_RESERVED_3		(0x01 << 7)
 #define SEMBEACON_FLAG_UNDEFINED		(0x00)
 
 #define ENDIAN_CHANGE_U16(x) ((((x)&0xFF00) >> 8) + (((x)&0xFF) << 8))
