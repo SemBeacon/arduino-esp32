@@ -1,3 +1,12 @@
+/**
+ * BLESemBeacon.cpp
+ * 	This is the SemBeacon object containing the data for a SemBeacon.
+ * 	Encoding and decoding aspect based on https://github.com/espressif/arduino-esp32/blob/master/libraries/BLE/src/BLEEddystoneURL.h
+ * 
+ * @author Maxim Van de Wynckel
+ * @version 1.0.0
+ **/
+
 #include "sdkconfig.h"
 #if defined(CONFIG_BLUEDROID_ENABLED)
 #include <string.h>
@@ -69,7 +78,7 @@ BLESemBeacon::BLESemBeacon()
 }
 
 std::string BLESemBeacon::decodeURI(uint8_t *uri, uint8_t length)
-{
+{ 
 	std::string decodedURI = "";
 	uint8_t sub_idx = 0;
 	while (sembeacon_uri_prefix_subs[sub_idx] != NULL)

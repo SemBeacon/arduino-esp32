@@ -21,6 +21,9 @@ typedef struct {
 	int minor: 	4;
 } sembeacon_version_t;
 
+/**
+ * SemBeacon Flags
+ **/
 #define SEMBEACON_FLAG_HAS_POSITION		(0x01 << 0)
 #define SEMBEACON_FLAG_PRIVATE			(0x01 << 1)
 #define SEMBEACON_FLAG_MOVING 			(0x01 << 2)

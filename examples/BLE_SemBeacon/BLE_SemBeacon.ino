@@ -1,6 +1,6 @@
 #define GPIO_DEEP_SLEEP_DURATION      100 // Sleep duration in ms
 #define BLE_ADVERTISEMENT_INTERVAL    1
-#define BEACON_UUID                   "fda50693-a4e2-4fb1-afcf-c6eb07647825"
+#define BEACON_UUID                   "77f340db-ac0d-20e8-aa3a-f656a29f236c"
 
 /* Uncomment the following two lines to disable BLE5 */
 #include "sdkconfig.h"
@@ -20,9 +20,10 @@ void createBeacon() {
   beacon.setManufacturerId(0x4c00);                           // Manufacturer of the beacon
   beacon.setSignalPower(-56);                                 // RSSI at 1m distance
   beacon.setNamespaceId(BLEUUID(BEACON_UUID));                // Namespace UUID
-  beacon.setInstanceId(0x3C0B1D8B);                           // Instance Identifier
-  beacon.setResourceURI("https://tinyurl.com/57mbbx2w");      // URI to the resource
-  
+  beacon.setInstanceId(0x48d787c1);                           // Instance Identifier
+  beacon.setResourceURI("https://bit.ly/3JsEnF9");            // URI to the resource
+  beacon.setBeaconFlags(SEMBEACON_FLAG_HAS_POSITION & SEMBEACON_FLAG_HAS_SYSTEM);
+
   advertising->setBeacon(&beacon);
 }
 
