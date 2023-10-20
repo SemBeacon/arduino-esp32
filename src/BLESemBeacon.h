@@ -35,6 +35,7 @@ typedef struct {
 #define SEMBEACON_FLAG_UNDEFINED		(0x00)
 
 #define ENDIAN_CHANGE_U16(x) ((((x)&0xFF00) >> 8) + (((x)&0xFF) << 8))
+#define ENDIAN_CHANGE_U32(x) ((((x)&0xFF000000)>>24) + (((x)&0x00FF0000)>>8)) + ((((x)&0xFF00)<<8) + (((x)&0xFF)<<24))
 
 class BLESemBeacon {
 private:
@@ -56,11 +57,11 @@ public:
 	std::string getScanResponseData();
 	std::string getExtendedAdvertisementData();
 	uint16_t    getManufacturerId();
-	void        setManufacturerId(uint16_t manufacturerId);
+	void        setManufacturerId(uint16_t manufacturerId, bool littleEndian = false);
 	BLEUUID 	getNamespaceId();
 	void        setNamespaceId(BLEUUID uuid);
 	uint32_t	getInstanceId();
-	void		setInstanceId(uint32_t uuid);
+	void		setInstanceId(uint32_t uuid, bool littleEndian = false);
 	int8_t      getSignalPower();
 	void        setSignalPower(int8_t rssi);
 	/// @brief Get the resource URI

@@ -66,7 +66,7 @@ static int string_begin_with(const char *str, const char *prefix)
 
 BLESemBeacon::BLESemBeacon()
 {
-	this->manufacturerId = 0x4C00;				   // Default manufacturer
+	this->manufacturerId = 0xFFFF;				   // Default manufacturer
 	this->instanceId = 0;						   // Default instance ID
 	this->signalPower = -56;					   // Signal power at 1m
 	this->flags = SEMBEACON_FLAG_UNDEFINED;
@@ -178,7 +178,7 @@ std::string BLESemBeacon::getManufacturerData()
 		uint8_t  	flags;				// SemBeacon flags
 	} __attribute__((packed)) m_adv_data;
 
-	m_adv_data.manufacturerId = ENDIAN_CHANGE_U16(this->manufacturerId);
+	m_adv_data.manufacturerId = this->manufacturerId;
 	m_adv_data.beaconCode = ENDIAN_CHANGE_U16(0xBEAC); // AltBeacon code
 	m_adv_data.instanceId = this->instanceId;
 	m_adv_data.signalPower = this->signalPower;
@@ -261,9 +261,9 @@ uint16_t BLESemBeacon::getManufacturerId()
 	return this->manufacturerId;
 }
 
-void BLESemBeacon::setManufacturerId(uint16_t manufacturerId)
+void BLESemBeacon::setManufacturerId(uint16_t manufacturerId, bool littleEndian)
 {
-	this->manufacturerId = manufacturerId;
+	this->manufacturerId = littleEndian ? ENDIAN_CHANGE_U16(manufacturerId) : manufacturerId;
 }
 
 int8_t BLESemBeacon::getSignalPower()
@@ -281,9 +281,9 @@ uint32_t BLESemBeacon::getInstanceId()
 	return this->instanceId;
 }
 
-void BLESemBeacon::setInstanceId(uint32_t id)
+void BLESemBeacon::setInstanceId(uint32_t id, bool littleEndian)
 {
-	this->instanceId = id;
+	this->instanceId = littleEndian ? id : ENDIAN_CHANGE_U32(id);
 }
 
 BLEUUID BLESemBeacon::getNamespaceId()

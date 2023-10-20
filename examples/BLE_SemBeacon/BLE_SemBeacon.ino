@@ -17,12 +17,14 @@ BLESemBeaconAdvertising *advertising;
 
 void createBeacon() {
   BLESemBeacon beacon = BLESemBeacon();
-  beacon.setManufacturerId(0x4c00);                           // Manufacturer of the beacon
-  beacon.setSignalPower(-56);                                 // RSSI at 1m distance
+  // Choose 0x004C for Apple Ltd. Note that this will
+  // not automatically be detected on iOS
+  beacon.setManufacturerId(0xFFFF);                           // Manufacturer of the beacon
+  beacon.setSignalPower(-30);                                 // RSSI at 1m distance
   beacon.setNamespaceId(BLEUUID(BEACON_UUID));                // Namespace UUID
-  beacon.setInstanceId(0x48d787c1);                           // Instance Identifier
+  beacon.setInstanceId(0x9c7ce6fc);                           // Instance Identifier
   beacon.setResourceURI("https://bit.ly/3JsEnF9");            // URI to the resource
-  beacon.setBeaconFlags(SEMBEACON_FLAG_HAS_POSITION & SEMBEACON_FLAG_HAS_SYSTEM);
+  beacon.setBeaconFlags(SEMBEACON_FLAG_HAS_POSITION | SEMBEACON_FLAG_HAS_SYSTEM);
 
   advertising->setBeacon(&beacon);
 }
